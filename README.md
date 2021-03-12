@@ -9,7 +9,7 @@ If you run out of gpu memory, decrease the batch_size variable.
 If you want to look at the code on github and it fails, try reloading or refreshing several times. 
 
 ## Results
-The best models, which have been posted under the best_models folder, reached an accuracy of about 30%.
+The best models, which have been posted under the best_models folder, reached an accuracy of about 47%.
 
 ## Implementation details
 Three Types of networks per layer of vectors
@@ -49,14 +49,14 @@ My 2080Ti runs into memory errors running this if the batch size is above around
 2) Saving states throughout the steps taken and adding them together. This would allow for gradients to get passed back to the original state similar to how RESNET can train very large model since the gradients can get passed backwards easier. 
 3) Perform some kind of evolutionary parameter search by mutating the model parameters while also using backprop. This has been shown to improve the accuracy of image classifiers and other models. But this would take a ton of compute. 
 
+## Yannic Kilcher's Attention
+This hass been pushed to github because during testing and tuning hyperparameters, a better model than previous was found. More testing needs to be done and I'm working on the visual explanation for it now. Previous versions of this code don't have the attention seen in the current version and will have similar performance. 
+
 ## Other Ideas behind the paper implementation
 This is basically a neural cellular automata from the paper [Growing Neural Cellular Automata](https://distill.pub/2020/growing-ca/) with some inspiration from the follow up paper [Self-classifying MNIST Digits](https://distill.pub/2020/selforg/mnist/). Except instead of a single list of numbers (or one vector) per pixel, there are several vectors per pixel in each image. The Growing Neural Cellular Automata paper was very difficult to train also because the long gradient chains, so increasing the models complexity in this GLOM paper makes training even harder. But the neural cellular automata papers are the reason why the MSE loss function is used while also adding random noise to the state during training. 
 
-## Why is there no version of attention?
-1) After implementing Geoffrey Hinton and [Yannic Kilcher's](https://www.youtube.com/watch?v=cllFzkvrYmE&ab_channel=YannicKilcher) version of attention, there was no difference in training or test accuracy.
-2) The attention mechanism most likely only make training harder as it will complicate the gradients used for backprop. 
 
 ### To do
-[Yannick Kilcher's](https://www.youtube.com/channel/UCZHmQk67mSJgfCCTn7xBfew) version of attention has already been coded and will be pushed to github after some testing is done and once I've generated the explanation for it's implementation. 
-
+1) [Yannick Kilcher's](https://www.youtube.com/channel/UCZHmQk67mSJgfCCTn7xBfew) version of attention has already been coded and will be pushed to github after some testing is done and once I've generated the explanation for it's implementation. 
+2) Test different state initializations.
 # If you find any issues, please feel free to contact me
