@@ -1,5 +1,5 @@
-﻿﻿# GLOM
-An incomplete implementation of Geoffrey Hinton's paper "How to represent part-whole hierarchies in a neural network" for MNIST Dataset.
+# GLOM
+An implementation of Geoffrey Hinton's paper "How to represent part-whole hierarchies in a neural network" for MNIST Dataset.
 To understand this implementation, please watch [Yannick Kilcher's GLOM video](https://www.youtube.com/watch?v=cllFzkvrYmE&ab_channel=YannicKilcher), then read this README.md, then read the code. 
 
 ## Running
@@ -9,7 +9,7 @@ If you run out of gpu memory, decrease the batch_size variable.
 If you want to look at the code on github and it fails, try reloading or refreshing several times. 
 
 ## Results
-The best models, which have been posted under the best_models folder, reached an accuracy of about 47%.
+The best models, which have been posted under the best_models folder, reached an accuracy of about 91%.
 
 ## Implementation details
 Three Types of networks per layer of vectors
@@ -46,7 +46,7 @@ Since each network only sees a 3x3 grid and not larger image patches, this techn
 ## If I had more compute
 My 2080Ti runs into memory errors running this if the batch size is above around 30, so here are my implementatin ideas if I had more compute. 
 1) Increase batch_size. This probably wont affect the training, but it would make testing the accuracy faster.
-2) Saving states throughout the steps taken and adding them together. This would allow for gradients to get passed back to the original state similar to how RESNET can train very large model since the gradients can get passed backwards easier. 
+2) Saving more states throughout the steps taken and adding them together. This would allow for gradients to get passed back to the original state similar to how RESNET can train very large model since the gradients can get passed backwards easier. This has been implemented to a smaller degree already and showed massive accuracy improvements.
 3) Perform some kind of evolutionary parameter search by mutating the model parameters while also using backprop. This has been shown to improve the accuracy of image classifiers and other models. But this would take a ton of compute. 
 
 ## Yannic Kilcher's Attention
@@ -57,6 +57,9 @@ This is basically a neural cellular automata from the paper [Growing Neural Cell
 
 
 ### To do
-1) [Yannick Kilcher's](https://www.youtube.com/channel/UCZHmQk67mSJgfCCTn7xBfew) version of attention has already been coded and will be pushed to github after some testing is done and once I've generated the explanation for it's implementation. 
-2) Test different state initializations.
+1) Generated the explanation for [Yannick Kilcher's](https://www.youtube.com/channel/UCZHmQk67mSJgfCCTn7xBfew) version of attention that is implemented here. 
+2) See if part-whole heirarchies are being found.
+3) Keep testing hyperpatameters to push accuracy higher.
+4) Test different state initializations.
+5) Train on harder datasets.
 # If you find any issues, please feel free to contact me
