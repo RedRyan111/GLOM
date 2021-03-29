@@ -46,11 +46,11 @@ Since each network only sees a 3x3 grid and not larger image patches, this techn
 ## If I had more compute
 My 2080Ti runs into memory errors running this if the batch size is above around 30, so here are my implementatin ideas if I had more compute. 
 1) Increase batch_size. This probably wont affect the training, but it would make testing the accuracy faster.
-2) Saving more states throughout the steps taken and adding them together. This would allow for gradients to get passed back to the original state similar to how RESNET can train very large model since the gradients can get passed backwards easier. This has been implemented to a smaller degree already and showed massive accuracy improvements.
+2) Saving more states throughout the steps taken and adding them together. This would allow for gradients to get passed back to the original state similar to how a RESNET architecture can train very large models since the gradients can get passed backwards easier. This has been implemented to a smaller degree already and showed massive accuracy improvements.
 3) Perform some kind of evolutionary parameter search by mutating the model parameters while also using backprop. This has been shown to improve the accuracy of image classifiers and other models. But this would take a ton of compute. 
 
 ## Yannic Kilcher's Attention
-This hass been pushed to github because during testing and tuning hyperparameters, a better model than previous was found. More testing needs to be done and I'm working on the visual explanation for it now. Previous versions of this code don't have the attention seen in the current version and will have similar performance. 
+This has been pushed to github because during testing and tuning hyperparameters, a better model than previous was found. More testing needs to be done and I'm working on the visual explanation for it now. Previous versions of this code don't have the attention seen in the current version and will have similar performance. 
 
 ## Other Ideas behind the paper implementation
 This is basically a neural cellular automata from the paper [Growing Neural Cellular Automata](https://distill.pub/2020/growing-ca/) with some inspiration from the follow up paper [Self-classifying MNIST Digits](https://distill.pub/2020/selforg/mnist/). Except instead of a single list of numbers (or one vector) per pixel, there are several vectors per pixel in each image. The Growing Neural Cellular Automata paper was very difficult to train also because the long gradient chains, so increasing the models complexity in this GLOM paper makes training even harder. But the neural cellular automata papers are the reason why the MSE loss function is used while also adding random noise to the state during training. 
@@ -59,7 +59,7 @@ This is basically a neural cellular automata from the paper [Growing Neural Cell
 ### To do
 1) Generated the explanation for [Yannick Kilcher's](https://www.youtube.com/channel/UCZHmQk67mSJgfCCTn7xBfew) version of attention that is implemented here. 
 2) See if part-whole heirarchies are being found.
-3) Keep testing hyperpatameters to push accuracy higher.
+3) Keep testing hyperparameters to push accuracy higher.
 4) Test different state initializations.
 5) Train on harder datasets.
 # If you find any issues, please feel free to contact me
