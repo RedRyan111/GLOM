@@ -9,7 +9,7 @@ If you run out of gpu memory, decrease the batch_size variable.
 If you want to look at the code on github and it fails, try reloading or refreshing several times. 
 
 ## Results
-The best models, which have been posted under the best_models folder, reached an accuracy of about 91%.
+The best models, which have been posted under the best_models folder, reached an accuracy of about ** 91% **.
 
 ## Implementation details
 Three Types of networks per layer of vectors
